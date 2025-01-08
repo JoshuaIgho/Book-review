@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Book Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+   <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Body font */
+            background-color: #0B1714 !important; /* Background color */
+            color: #ffffff !important; /* Text color */
+            padding: 20px !important; /* Padding around the body */
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif ; /* Heading font */
+            text-align: center; /* Center the headings */
+            margin-bottom: 20px !important; /* Space below headings */
+            font-size: 35px !important;
+        }
+
+        .container {
+            max-width: 800px !important; /* Max width for content */
+            margin: 0 auto; /* Center the container */
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the container */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        p {
+            line-height: 1.6; /* Improve readability */
+            margin-bottom: 15px; /* Space below paragraphs */
+        }
+
+        .about-image {
+            width: 100%; /* Full width image */
+            border-radius: 10px; /* Rounded corners for images */
+            margin-bottom: 20px; /* Space below image */
+        }
+
+        .section {
+            margin-bottom: 30px; /* Space between sections */
+        }
+
+        a {
+            color: #ffff; /* Link color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        .nav-link {
+            color: #ffff; /* Default text color for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+            text-decoration: none !important;
+            border-bottom: 2px solid transparent; /* Invisible border */
+            margin: 0px;
+        }
+        
+
+        .nav-link.active {
+            background-color: #0a1613 !important; /* Set the active link background color */
+            color: white; /* Ensure text color is white for better contrast */
+            border-radius: 5px; /* Optional: Add rounded corners */
+        }
+
+        .nav-link:hover{
+            color: #a8e6cf !important; /* Change color on hover for better visibility */
+            border-bottom: 2px solid #d6d1d1; /* Add visible border on hover */
+        }
+        .about-image {
+            width: 100%; /* Full width image */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 400px; /* Set a maximum height */
+            border-radius: 10px; /* Rounded corners for images */
+            margin-bottom: 20px; /* Space below image */
+            margin-top: -8px;
+            object-fit: cover; /* Cover the area without distortion */
+        }
+        @media only screen and (max-width: 950px) {
+            @media only screen and (max-width: 950px) {
+            h1, h2{
+                font-size: 25px !important;
+            }
+        }
+        }
+       
+    </style>
+</head>
+<body>
+    <%- include('header') %>
+    <h1>About Us</h1>
+    <div class="container">
+        
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJvb2t8ZW58MHx8fHwxNjYzMjYwMjI5&ixlib=rb-1.2.1&q=80&w=800" alt="Books and Reviews" class="about-image">
+        
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>
+                Welcome to Book Reviews, a dedicated platform for avid readers who have embarked on literary journeys and want to keep their experiences alive. We understand that with the multitude of stories we encounter, it’s easy to forget the details of each book. That’s why we’ve created a space for you to document your reading adventures.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>What We Offer</h2>
+            <p>
+                Our goal is to empower you to add the books you've read, along with your personal reviews and ratings. You can share the author's name and the date you finished reading, allowing you to keep track of your literary accomplishments and revisit your favorite stories at any time. 
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Join Our Community</h2>
+            <p>
+                We believe in the power of shared experiences. By documenting your thoughts and insights, you not only help yourself remember the nuances of each book but also contribute to a growing community of readers. Your reviews can inspire others and spark discussions about beloved titles.
+            </p>
+            <p>
+                Have questions or suggestions? Feel free to <a href="/books/contact">reach out to us</a>. We’d love to hear from you and support your reading journey!
+            </p>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

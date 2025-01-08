@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Book Reviews</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+        <style>
+        body {
+            background-color: #0B1714 !important; /* Same background color */
+            color: #ffffff !important; /* Same text color */
+            font-family: Arial, sans-serif; /* Consistent font */
+            padding: 20px ; /* Padding around the body */
+            font-family: 'Roboto', sans-serif ; /* Body font */
+        }
+
+        a{
+            color: white;
+        }
+
+        h1, h2 {
+            color: #ffffff !important; /* Heading color */
+            text-align: center !important; /* Center the heading */
+            font-family: 'Playfair Display', serif !important; /* Heading font */
+            font-size: 35px !important;
+        }
+
+        .container {
+            max-width: 600px !important; /* Max width for content */
+            margin: 0 auto; /* Center the container */
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the container */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        form {
+            display: flex; /* Use flexbox for form layout */
+            flex-direction: column; /* Stack elements vertically */
+            margin: 0 auto ; /* Center the form */
+            padding: 20px; /* Padding inside form */
+        }
+       
+
+        input, textarea {
+            margin-bottom: 10px !important; /* Space below input fields */
+            padding: 10px; /* Padding inside input fields */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #D0BEAD; /* Border color */
+            background-color: #172526; /* Input background color */
+            color: #D0BEAD; /* Input text color */
+        }
+
+        button {
+            width: 100%; /* Full width button */
+            padding: 10px; /* Padding inside button */
+            background-color: #0a1613; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        button:hover {
+            background-color: #0c1d19 !important ; /* Change button color on hover */
+        }
+        .nav-link {
+            color: #ffff; /* Default text color for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+            text-decoration: none !important;
+            border-bottom: 2px solid transparent; /* Invisible border */
+            margin: 0px;
+        }
+        
+
+        .nav-link.active {
+            background-color: #0a1613 !important; /* Set the active link background color */
+            color: white; /* Ensure text color is white for better contrast */
+            border-radius: 5px; /* Optional: Add rounded corners */
+        }
+
+        .nav-link:hover{
+            color: #a8e6cf !important; /* Change color on hover for better visibility */
+            border-bottom: 2px solid #d6d1d1; /* Add visible border on hover */
+        }
+        @media only screen and (max-width: 950px) {
+            h1, h2{
+                font-size: 25px !important;
+            }
+        }
+
+    </style>
+     <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            // Optionally, you can handle form data here (e.g., send it to a server)
+
+            // Refresh the page
+            window.location.reload();
+        }
+    </script>
+</head>
+<body>
+    <%- include('header') %>
+    <h1>Contact Us!</h1>
+    <h2>We'd Love to Hear From You!</h2>
+    <div class="container">
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

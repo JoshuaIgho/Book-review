@@ -1,0 +1,19 @@
+# Book Review App
+
+## Description
+This project is a simple web application that allows users to manage their book reviews. Users can add, edit, delete, and view their books along with ratings and reviews.
+
+## Technologies Used
+- Node.js
+- Express.js
+- PostgreSQL
+- EJS
+- Axios
+- CSS
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd book-review-app
