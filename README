@@ -11,9 +11,3 @@ This project is a simple web application that allows users to manage their book 
 - Axios
 - CSS
 
-## Setup Instructions
-
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-url>
-   cd book-review-app
