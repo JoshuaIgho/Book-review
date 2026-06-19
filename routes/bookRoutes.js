@@ -6,6 +6,13 @@ const multer = require('multer');
 const path = require('path');
 const formatDate = require('../utils/dateFormatter'); // Import the formatter function
 
+// Authentication Middleware
+const isAuthenticated = (req, res, next) => {
+    if (req.session.userId) {
+        return next();
+    }
+    res.redirect('/auth/login');
+};
 
 // Multer configuration
 const storage = multer.diskStorage({
@@ -35,9 +42,9 @@ const upload = multer({
 
 
 // Get all books
-router.get('/', async (req, res) => {
+router.get('/', isAuthenticated, async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM books ORDER BY read_date DESC');
+        const result = await pool.query('SELECT * FROM books WHERE user_id = $1 ORDER BY read_date DESC', [req.session.userId]);
 
         // Format the read_date for each book
         const books = result.rows.map(book => ({
@@ -53,9 +60,8 @@ router.get('/', async (req, res) => {
 });
 
 // Add new book form
-router.get('/add', (req, res) => {
+router.get('/add', isAuthenticated, (req, res) => {
     res.render('add');
-    
 });
 
 router.get('/about', (req, res) => {
@@ -67,11 +73,11 @@ router.get('/contact', (req, res) => {
 });
 
 // Route to get a specific book's review
-router.post('/review', async (req, res) => {
+router.post('/review', isAuthenticated, async (req, res) => {
     const bookId = req.body.bookId; // Get the bookId from the form submission
 
     try {
-        const result = await pool.query('SELECT * FROM books WHERE id = $1', [bookId]);
+        const result = await pool.query('SELECT * FROM books WHERE id = $1 AND user_id = $2', [bookId, req.session.userId]);
         const book = result.rows[0]; // Get the first row
 
         if (!book) {
@@ -99,8 +105,8 @@ router.post('/', upload.single('cover_file'), async (req, res) => {
 
     try {
         await pool.query(
-            'INSERT INTO books (title, author, rating, review, cover_url, read_date) VALUES ($1, $2, $3, $4, $5, $6)',
-            [title, author, rating, review, cover_url, read_date]
+            'INSERT INTO books (title, author, rating, review, cover_url, read_date, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            [title, author, rating, review, cover_url, read_date, req.session.userId]
         );
         res.redirect('/books');
     } catch (err) {
@@ -123,19 +129,23 @@ const fetchCoverUrl = async (title) => {
 
 
 // Edit book form
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', isAuthenticated, async (req, res) => {
     const { id } = req.params;
-    const result = await pool.query('SELECT * FROM books WHERE id = $1', [id]);
+    const result = await pool.query('SELECT * FROM books WHERE id = $1 AND user_id = $2', [id, req.session.userId]);
+    if (result.rows.length === 0) return res.status(404).send('Book not found');
     res.render('edit', { book: result.rows[0] });
 });
 
 // Update book
-router.put('/:id', upload.single('cover_file'), async (req, res) => {
+router.put('/:id', isAuthenticated, upload.single('cover_file'), async (req, res) => {
     const { id } = req.params;
     const { title, author, rating, review, read_date, existing_cover_url } = req.body;
     const cover_url = req.file ? `/uploads/${req.file.filename}` : existing_cover_url;
 
     try {
+        const check = await pool.query('SELECT * FROM books WHERE id = $1 AND user_id = $2', [id, req.session.userId]);
+        if (check.rows.length === 0) return res.status(403).send('Unauthorized');
+
         await pool.query(
             'UPDATE books SET title = $1, author = $2, rating = $3, review = $4, cover_url = $5, read_date = $6 WHERE id = $7',
             [title, author, rating, review, cover_url, read_date, id]
@@ -151,9 +161,12 @@ router.put('/:id', upload.single('cover_file'), async (req, res) => {
 
 
 // Delete book
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
     const { id } = req.params;
     try {
+        const check = await pool.query('SELECT * FROM books WHERE id = $1 AND user_id = $2', [id, req.session.userId]);
+        if (check.rows.length === 0) return res.status(403).send('Unauthorized');
+
         await pool.query('DELETE FROM books WHERE id = $1', [id]);
         res.redirect('/books');
     } catch (err) {
