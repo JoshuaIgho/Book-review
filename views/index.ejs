@@ -85,10 +85,12 @@
                             <span class="icon-title"><i class="fas fa-book"></i> Edit</span>
                             <span class="new-tab"><i class="fas fa-arrow-circle-right"></i></span>        
                         </a>
-                        <a href="/books/delete/<%= book.id %>" class="latest button">
-                            <span class="icon-title">Delete</span>
-                            <span class="new-tab"><i class="fas fa-arrow-circle-right"></i></span>    
-                        </a>
+                        <form action="/books/<%= book.id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" class="latest button" style="border:none; background:none; padding:0; width:100%; text-align:left;">
+                                <span class="icon-title">Delete</span>
+                                <span class="new-tab"><i class="fas fa-arrow-circle-right"></i></span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </article>
