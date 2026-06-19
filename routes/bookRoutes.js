@@ -88,7 +88,14 @@ router.post('/review', async (req, res) => {
 // Add new book
 router.post('/', upload.single('cover_file'), async (req, res) => {
     const { title, author, rating, review, read_date } = req.body;
-    const cover_url = req.file ? `/uploads/${req.file.filename}` : '/images/default-cover.jpg';
+    let cover_url = '/images/default-cover.jpg';
+
+    if (req.file) {
+        cover_url = `/uploads/${req.file.filename}`;
+    } else {
+        // Fallback to Open Library API if no file uploaded
+        cover_url = await fetchCoverUrl(title);
+    }
 
     try {
         await pool.query(
@@ -123,11 +130,10 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 // Update book
-router.post('/edit/:id', upload.single('cover_file'), async (req, res) => {
+router.put('/:id', upload.single('cover_file'), async (req, res) => {
     const { id } = req.params;
-    const { title, author, rating, review, read_date } = req.body;
-    // const cover_url = req.file ? `/uploads/${req.file.filename}` : req.body.existing_cover_url;
-    const cover_url = req.file ? `/uploads/${req.file.filename}` : '/images/default-cover.jpg';
+    const { title, author, rating, review, read_date, existing_cover_url } = req.body;
+    const cover_url = req.file ? `/uploads/${req.file.filename}` : existing_cover_url;
 
     try {
         await pool.query(
@@ -145,7 +151,7 @@ router.post('/edit/:id', upload.single('cover_file'), async (req, res) => {
 
 
 // Delete book
-router.get('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await pool.query('DELETE FROM books WHERE id = $1', [id]);
