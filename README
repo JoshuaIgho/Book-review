@@ -1,13 +1,33 @@
-# Book Review App
+# ChapterDock 📚
 
-## Description
-This project is a simple web application that allows users to manage their book reviews. Users can add, edit, delete, and view their books along with ratings and reviews.
+ChapterDock is a full-stack book review platform that allows users to create accounts, log in securely, and share reviews about books they have read.
 
-## Technologies Used
+## Features
+
+- User authentication (Signup/Login)
+- Secure session management
+- Add and manage books
+- Rate books
+- Write and publish reviews
+- Responsive user interface
+- PostgreSQL database integration
+- Supabase-powered backend services
+
+## Tech Stack
+
 - Node.js
 - Express.js
 - PostgreSQL
+- Supabase
 - EJS
-- Axios
 - CSS
 
+## Future Improvements
+
+- Book cover uploads
+- Search and filtering
+- User profiles
+- Like and comment system
+- Bookmark/Favorites feature
+- Pagination
+- Recommendation engine
