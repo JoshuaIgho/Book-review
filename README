@@ -17,7 +17,7 @@ The final release will be tagged as **ChapterDock 2.0 (Built Version)**.
 - 📝 Write and publish reviews
 - 📱 Responsive user interface
 - 🗄️ PostgreSQL database integration
-- ⚡ Supabase-powered backend services
+- ⚡ Supabase backend services
 
 ---
 
@@ -32,20 +32,11 @@ The final release will be tagged as **ChapterDock 2.0 (Built Version)**.
 
 ---
 
-## 📸 Project Vision
-
-ChapterDock is designed to become a simple but powerful reading community where users can:
-- Track what they read
-- Share honest reviews
-- Discover new books
-- Connect through shared reading experiences
-
----
-
 ## 🚀 Future Vision
 
 ChapterDock will evolve into a full reading ecosystem where users can:
-- Build personal libraries
-- Follow other readers
-- Receive AI-powered book recommendations
-- Participate in reading communities
+
+- Build personal libraries  
+- Follow other readers  
+- Receive AI-powered book recommendations  
+- Participate in reading communities  
