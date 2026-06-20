@@ -1,33 +1,51 @@
 # ChapterDock 📚
 
-ChapterDock is a full-stack book review platform that allows users to create accounts, log in securely, and share reviews about books they have read.
+ChapterDock is a full-stack book review platform that allows users to create accounts, log in securely, and share reviews about books they have read. Users can rate books, write reviews, and manage their reading activity in one place.
 
-## Features
+🚧 **ChapterDock 2.0 is currently in development**  
+A major upgrade is underway to improve performance, design, and user experience, while introducing new features such as advanced search, recommendations, and enhanced user profiles.  
+The final release will be tagged as **ChapterDock 2.0 (Built Version)**.
 
-- User authentication (Signup/Login)
-- Secure session management
-- Add and manage books
-- Rate books
-- Write and publish reviews
-- Responsive user interface
-- PostgreSQL database integration
-- Supabase-powered backend services
+---
 
-## Tech Stack
+## ✨ Features
+
+- 🔐 User authentication (Signup / Login)
+- 🛡️ Secure session management
+- 📚 Add and manage books
+- ⭐ Rate books
+- 📝 Write and publish reviews
+- 📱 Responsive user interface
+- 🗄️ PostgreSQL database integration
+- ⚡ Supabase-powered backend services
+
+---
+
+## 🛠️ Tech Stack
 
 - Node.js
 - Express.js
+- EJS (Embedded JavaScript Templates)
 - PostgreSQL
 - Supabase
-- EJS
-- CSS
+- CSS3
 
-## Future Improvements
+---
 
-- Book cover uploads
-- Search and filtering
-- User profiles
-- Like and comment system
-- Bookmark/Favorites feature
-- Pagination
-- Recommendation engine
+## 📸 Project Vision
+
+ChapterDock is designed to become a simple but powerful reading community where users can:
+- Track what they read
+- Share honest reviews
+- Discover new books
+- Connect through shared reading experiences
+
+---
+
+## 🚀 Future Vision
+
+ChapterDock will evolve into a full reading ecosystem where users can:
+- Build personal libraries
+- Follow other readers
+- Receive AI-powered book recommendations
+- Participate in reading communities
