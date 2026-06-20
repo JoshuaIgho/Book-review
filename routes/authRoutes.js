@@ -39,7 +39,15 @@ router.post('/login', async (req, res) => {
         if (user && await bcrypt.compare(password, user.password_hash)) {
             req.session.userId = user.id;
             req.session.username = user.username;
-            res.redirect('/books');
+
+            // Explicitly save the session before redirecting to ensure it's persisted in the DB
+            req.session.save((err) => {
+                if (err) {
+                    console.error('Session save error:', err);
+                    return res.render('login', { error: 'Login failed, please try again' });
+                }
+                res.redirect('/books');
+            });
         } else {
             res.render('login', { error: 'Invalid email or password' });
         }
